@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfu74lwibabmc"]
+
+[ext_resource type="PackedScene" uid="uid://yv8k4ecn3ol8" path="res://Meshes/CritterJam_LivingRoom1.glb" id="1_ica4d"]
+
+[node name="LivingRoomLevel" type="Node3D"]
+
+[node name="CritterJam_LivingRoom1" parent="." instance=ExtResource("1_ica4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17146, 1.19209e-07, -1.76059)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CritterJam_LivingRoom1/CeilingFan" index="1"]
+transform = Transform3D(-4.05661, -0.107102, -0.0296867, -0.486099, 4.53314, 50.0697, -0.103984, 4.04019, -0.366794, 0, -31.5168, 0)
+light_color = Color(1, 1, 0.87451, 1)
+light_indirect_energy = 4.352
+shadow_enabled = true
+
+[node name="AnimationPlayer" parent="CritterJam_LivingRoom1" index="53"]
+autoplay = "Cylinder_008Action"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CritterJam_LivingRoom1/AnimationPlayer" index="0"]
+transform = Transform3D(1, 0, 0, 0, -0.0961585, 0.995366, 0, -0.995366, -0.0961585, 0.69256, 1.07607, -0.293936)
+light_color = Color(1, 1, 0.807843, 1)
+light_energy = 2.676
+light_size = 0.21
+shadow_enabled = true
+
+[editable path="CritterJam_LivingRoom1"]
