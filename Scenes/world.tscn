@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdjaciuhjxosu"]
 
-[ext_resource type="PackedScene" uid="uid://dfu74lwibabmc" path="res://Scenes/living_room_level.tscn" id="2_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://cdgsq8qu2j3o" path="res://Scenes/living_room_level.tscn" id="2_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://cuj5ubafqrgl2" path="res://Scenes/main_camera.tscn" id="2_go701"]
 
 [node name="World" type="Node3D"]
 
 [node name="MainCamera" parent="." instance=ExtResource("2_go701")]
-transform = Transform3D(0.683274, 0.24973, -0.686128, 0, 0.939693, 0.34202, 0.730162, -0.233693, 0.642067, -4.72153, 2.73981, 2.84952)
+transform = Transform3D(0.806102, 0.275703, -0.757488, 0, 1.07125, 0.389903, 0.806102, -0.275703, 0.757488, -4.72153, 2.73981, 2.84952)
 
 [node name="LivingRoomLevel" parent="." instance=ExtResource("2_5a7ea")]
