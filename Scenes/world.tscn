@@ -6,6 +6,6 @@
 [node name="World" type="Node3D"]
 
 [node name="MainCamera" parent="." instance=ExtResource("2_go701")]
-transform = Transform3D(0.806102, 0.275703, -0.757488, 0, 1.07125, 0.389903, 0.806102, -0.275703, 0.757488, -4.72153, 2.73981, 2.84952)
+transform = Transform3D(-0.681373, 0.250337, -0.687796, 0, 0.939693, 0.34202, 0.731937, 0.233043, -0.640281, -4.72153, 2.73981, -2.03959)
 
 [node name="LivingRoomLevel" parent="." instance=ExtResource("2_5a7ea")]
