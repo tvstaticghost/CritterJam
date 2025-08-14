@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdjaciuhjxosu"]
+[gd_scene load_steps=6 format=3 uid="uid://cdjaciuhjxosu"]
 
 [ext_resource type="PackedScene" uid="uid://cdgsq8qu2j3o" path="res://Scenes/living_room_level.tscn" id="2_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://cuj5ubafqrgl2" path="res://Scenes/main_camera.tscn" id="2_go701"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_go701"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_5a7ea"]
+sky_material = SubResource("ProceduralSkyMaterial_go701")
+
+[sub_resource type="Environment" id="Environment_8j60k"]
+background_mode = 1
+sky = SubResource("Sky_5a7ea")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8j60k")
 
 [node name="MainCamera" parent="." instance=ExtResource("2_go701")]
 transform = Transform3D(-0.681373, 0.250337, -0.687796, 0, 0.939693, 0.34202, 0.731937, 0.233043, -0.640281, -4.72153, 2.73981, -2.03959)
