@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdjaciuhjxosu"]
+[gd_scene load_steps=10 format=3 uid="uid://cdjaciuhjxosu"]
 
+[ext_resource type="Script" uid="uid://8q2xtwo86aan" path="res://Scripts/world.gd" id="1_8j60k"]
 [ext_resource type="PackedScene" uid="uid://cdgsq8qu2j3o" path="res://Scenes/living_room_level.tscn" id="2_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://cuj5ubafqrgl2" path="res://Scenes/main_camera.tscn" id="2_go701"]
+[ext_resource type="PackedScene" uid="uid://td2gs0x1viro" path="res://Meshes/KitchenLevel.glb" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://dvmrq5bbiafvf" path="res://Meshes/CritterJam_LivingRoom_Roof.glb" id="4_fo5ed"]
+[ext_resource type="Script" uid="uid://drukxkl14va8g" path="res://Scripts/camera_switch_label.gd" id="6_5ukr8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_go701"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -12,16 +16,106 @@ sky_material = SubResource("ProceduralSkyMaterial_go701")
 
 [sub_resource type="Environment" id="Environment_8j60k"]
 background_mode = 1
+background_color = Color(0.140447, 0.140447, 0.140447, 1)
 sky = SubResource("Sky_5a7ea")
 tonemap_mode = 2
 glow_enabled = true
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_8j60k")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8j60k")
 
-[node name="MainCamera" parent="." instance=ExtResource("2_go701")]
+[node name="LivingRoomCam1" parent="." instance=ExtResource("2_go701")]
 transform = Transform3D(-0.681373, 0.250337, -0.687796, 0, 0.939693, 0.34202, 0.731937, 0.233043, -0.640281, -4.72153, 2.73981, -2.03959)
 
+[node name="LivingRoomCam2" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(0.507268, -0.294749, 0.809816, 0, 0.939693, 0.34202, -0.861789, -0.173496, 0.476676, 4.16235, 2.73981, 2.85566)
+
+[node name="KitchenCam1" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(0.787237, -0.210907, 0.579463, -1.86207e-08, 0.939693, 0.34202, -0.616651, -0.269251, 0.739761, 5.09212, 4.75746, 24.0534)
+
+[node name="KitchenCam2" parent="." instance=ExtResource("2_go701")]
+transform = Transform3D(-0.817145, -0.197151, 0.541669, -1.86207e-08, 0.939693, 0.34202, -0.576433, 0.27948, -0.767865, 5.07512, 4.75746, 7.02346)
+
 [node name="LivingRoomLevel" parent="." instance=ExtResource("2_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0950317, 0)
+
+[node name="Book" parent="LivingRoomLevel/CritterJam_LivingRoom1/CoffeeTable" index="0"]
+transform = Transform3D(-0.755422, 0, -0.982049, 0, 1.23899, 0, 0.982049, 0, -0.755422, 0.49967, 0.0842674, 1.11789)
+
+[node name="Book_001" parent="LivingRoomLevel/CritterJam_LivingRoom1/CoffeeTable" index="1"]
+transform = Transform3D(1.19141, 0, -0.340029, 0, 1.23899, 0, 0.340029, 0, 1.19141, -0.201259, 0.134456, -1.15173)
+
+[node name="CollisionShape3D" parent="LivingRoomLevel/CritterJam_LivingRoom1/CoffeeTable/Book_001/Book" index="0"]
+transform = Transform3D(0.950646, 0, -0.310278, 0, 1, 0, 0.310278, 0, 0.950646, -1.02654, -0.172956, 1.32526)
+
+[node name="CritterJam_LivingRoom_Roof" parent="LivingRoomLevel" instance=ExtResource("4_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12341, 0, -1.72016)
+
+[node name="KitchenLevel" parent="." instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.1202)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="KitchenLevel/FumeHood" index="0"]
+transform = Transform3D(1.34748, 0, 0, 0, 6.67231, 0, 0, 0, 1.05878, 0.397687, -4.14017, 0)
+light_energy = 4.394
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="KitchenLevel/IslandLight1" index="0"]
+transform = Transform3D(3.28383, 0, 0, 0, 3.28383, 0, 0, 0, 3.28383, 0, -1.82366, 0)
+light_color = Color(1, 1, 0.890196, 1)
+light_energy = 2.455
+light_indirect_energy = 2.293
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="KitchenLevel/IslandLight1" index="1"]
+transform = Transform3D(3.28383, 0, 0, 0, 3.28383, 0, 0, 0, 3.28383, 9.73157, -1.82366, -17.1064)
+light_color = Color(1, 1, 0.890196, 1)
+light_energy = 2.455
+light_indirect_energy = 2.293
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="KitchenLevel/IslandLight2" index="0"]
+transform = Transform3D(3.28383, 0, 0, 0, 3.28383, 0, 0, 0, 3.28383, 0, -1.77531, 0)
+light_color = Color(1, 1, 0.901961, 1)
+light_energy = 2.067
+light_indirect_energy = 2.219
+light_size = 0.076
+shadow_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CameraSwitchLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.998
+anchor_top = 0.991
+anchor_right = 1.0
+anchor_bottom = 0.991
+offset_left = -198.692
+offset_top = -117.141
+offset_right = -2.0
+offset_bottom = -0.141052
+grow_horizontal = 0
+grow_vertical = 0
+text = "Switch Cameras: [Space]
+Pan Camera: [WASD]
+Zoom In: [E]
+Zoom Out: [C]"
+script = ExtResource("6_5ukr8")
+
+[editable path="LivingRoomLevel"]
+[editable path="LivingRoomLevel/CritterJam_LivingRoom1"]
+[editable path="KitchenLevel"]

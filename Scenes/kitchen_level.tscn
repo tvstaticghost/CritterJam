@@ -1,14 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpta7s1wf61js"]
+[gd_scene load_steps=2 format=3 uid="uid://byib4vlfxg6wu"]
 
 [ext_resource type="PackedScene" uid="uid://td2gs0x1viro" path="res://Meshes/KitchenLevel.glb" id="1_uaouu"]
 
-[node name="KitchenLevel" type="Node3D"]
-
-[node name="KitchenLevel" parent="." instance=ExtResource("1_uaouu")]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="KitchenLevel/IslandLight2" index="0"]
-transform = Transform3D(3.28383, 0, 0, 0, 3.28383, 0, 0, 0, 3.28383, 0, -1.2112, 0)
-light_color = Color(1, 1, 0.933333, 1)
-shadow_enabled = true
-
-[editable path="KitchenLevel"]
+[node name="KitchenLevel" instance=ExtResource("1_uaouu")]
