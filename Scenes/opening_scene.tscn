@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb2rg5hppkpxx"]
+
+[ext_resource type="Script" uid="uid://wryfpwu85red" path="res://Scripts/opening_scene.gd" id="1_3ktlq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ktlq"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.721569, 0.513726, 0.188235, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a4sy"]
+bg_color = Color(0.721569, 0.513726, 0.188235, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.721569, 0.513726, 0.188235, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_3ktlq"]
+Button/colors/font_color = Color(0.152941, 0.152941, 0.152941, 1)
+Button/colors/font_hover_color = Color(0.721569, 0.513726, 0.188235, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_3ktlq")
+Button/styles/hover = SubResource("StyleBoxFlat_3ktlq")
+Button/styles/normal = SubResource("StyleBoxFlat_5a4sy")
+Button/styles/pressed = SubResource("StyleBoxFlat_5a4sy")
+
+[node name="OpeningScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ktlq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -9.5
+offset_right = 20.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.721569, 0.513726, 0.188235, 1)
+theme_override_font_sizes/font_size = 21
+text = "You are a critter hunter, specializing in mimics.
+
+A victim has been found dead, and somewhere in their home you believe a critter may be hiding disguised as a household object.
+
+With the house being across the country, you cannot investigate in person.
+You’ve been granted access to the live security feeds of the rooms where the critter may be lurking.
+
+Good luck."
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_top = -133.0
+offset_right = -59.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_3ktlq")
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="play_button"]

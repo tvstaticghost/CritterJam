@@ -17,7 +17,6 @@ var is_phone_active: bool = false
 func _ready() -> void:
 	starting_camera_x = rotation_degrees.x
 	starting_camera_y = rotation_degrees.y
-	print(rotation_degrees.x)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
@@ -37,8 +36,6 @@ func shoot_ray():
 	
 	if !raycast_result.is_empty():
 		print(str(raycast_result.collider.name))
-		if raycast_result.collider.name == "Purple Book":
-			purple_book_text.visible = true
 		#Change this functionality to display in UI
 
 func _process(_delta: float) -> void:
