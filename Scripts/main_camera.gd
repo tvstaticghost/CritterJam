@@ -12,6 +12,7 @@ var min_fov: float = 25.0
 #30.0 to 80.0 FOV
 
 var is_camera_moving: bool = false
+var is_phone_active: bool = false
 
 func _ready() -> void:
 	starting_camera_x = rotation_degrees.x
@@ -20,7 +21,8 @@ func _ready() -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
-		shoot_ray()
+		if !is_phone_active:
+			shoot_ray()
 	
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -44,35 +46,41 @@ func _process(_delta: float) -> void:
 	
 	# Look down
 	if Input.is_action_pressed("down"):
-		if rotation_degrees.x - camera_rotation_amount >= starting_camera_x - 15.0:
-			rotation_degrees.x -= camera_rotation_amount
-			is_camera_moving = true
+		if !is_phone_active:
+			if rotation_degrees.x - camera_rotation_amount >= starting_camera_x - 15.0:
+				rotation_degrees.x -= camera_rotation_amount
+				is_camera_moving = true
 
 	# Look up
 	if Input.is_action_pressed("up"):
-		if rotation_degrees.x + camera_rotation_amount <= starting_camera_x + 15.0:
-			rotation_degrees.x += camera_rotation_amount
-			is_camera_moving = true
+		if !is_phone_active:
+			if rotation_degrees.x + camera_rotation_amount <= starting_camera_x + 15.0:
+				rotation_degrees.x += camera_rotation_amount
+				is_camera_moving = true
 			
 	# Turn left
 	if Input.is_action_pressed("left"):
-		if rotation_degrees.y + camera_rotation_amount <= starting_camera_y + 15.0:
-			rotation_degrees.y += camera_rotation_amount
-			is_camera_moving = true
+		if !is_phone_active:
+			if rotation_degrees.y + camera_rotation_amount <= starting_camera_y + 15.0:
+				rotation_degrees.y += camera_rotation_amount
+				is_camera_moving = true
 			
 	# Turn right
 	if Input.is_action_pressed("right"):
-		if rotation_degrees.y - camera_rotation_amount >= starting_camera_y - 15.0:
-			rotation_degrees.y -= camera_rotation_amount
-			is_camera_moving = true
+		if !is_phone_active:
+			if rotation_degrees.y - camera_rotation_amount >= starting_camera_y - 15.0:
+				rotation_degrees.y -= camera_rotation_amount
+				is_camera_moving = true
 			
 	if Input.is_action_pressed("zoom_in"):
-		if fov - camera_zoom_amount >= min_fov:
-			fov -= camera_zoom_amount
+		if !is_phone_active:
+			if fov - camera_zoom_amount >= min_fov:
+				fov -= camera_zoom_amount
 	
 	if Input.is_action_pressed("zoom_out"):
-		if fov + camera_zoom_amount <= max_fov:
-			fov += camera_zoom_amount
+		if !is_phone_active:
+			if fov + camera_zoom_amount <= max_fov:
+				fov += camera_zoom_amount
 		
 			
 	if not Input.is_anything_pressed():

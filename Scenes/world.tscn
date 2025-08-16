@@ -267,6 +267,16 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="BlurOverlay" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.52549)
+
 [node name="CameraSwitchLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -287,6 +297,7 @@ Zoom Out: [C]"
 script = ExtResource("6_5ukr8")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
