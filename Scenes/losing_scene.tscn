@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dji1w71h2j0j6"]
+
+[ext_resource type="Theme" uid="uid://cqooj5e6wh5on" path="res://Themes/orange_button.tres" id="1_grsf8"]
+[ext_resource type="Script" uid="uid://ju3hfach38o5" path="res://Scripts/losing_scene.gd" id="1_m3s8j"]
+
+[node name="LosingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m3s8j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -19.5
+offset_right = 160.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.721569, 0.513726, 0.188235, 1)
+theme_override_font_sizes/font_size = 25
+text = "You failed to locate the critter."
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.535
+anchor_right = 0.5
+anchor_bottom = 0.535
+offset_left = -71.0
+offset_top = 0.319977
+offset_right = 65.0
+offset_bottom = 39.32
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_grsf8")
+text = "Retry?"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

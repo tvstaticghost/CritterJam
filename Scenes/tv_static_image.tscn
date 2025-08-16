@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://pkeu4i7uc53n"]
 
 [ext_resource type="Shader" uid="uid://cogkpaexici0f" path="res://Scripts/tv_static.gdshader" id="1_s72e8"]
-[ext_resource type="Texture2D" uid="uid://oh8ixwlvuvwe" path="res://Materials/tv_static_text.png" id="2_neps4"]
+[ext_resource type="Texture2D" uid="uid://co200lsg842h8" path="res://Materials/candleriddle.png" id="2_neps4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_neps4"]
 render_priority = 0
@@ -10,7 +10,7 @@ shader_parameter/noise_scale = 4.0
 shader_parameter/contrast = 1.5
 shader_parameter/flicker_speed = 30.0
 shader_parameter/text_texture = ExtResource("2_neps4")
-shader_parameter/text_blend = 0.5
+shader_parameter/text_blend = 0.792
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aq0su"]
 

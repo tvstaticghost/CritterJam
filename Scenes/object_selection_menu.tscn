@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwj5h6llxgvr0"]
+
+[ext_resource type="Script" uid="uid://dcwflc230wgr4" path="res://Scripts/object_selection_menu.gd" id="1_002pe"]
+[ext_resource type="Theme" uid="uid://cqooj5e6wh5on" path="res://Themes/orange_button.tres" id="2_c0d5q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_002pe"]
+bg_color = Color(0.101961, 0.713726, 0.403922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_5r0r5"]
+OptionButton/styles/hover = SubResource("StyleBoxFlat_002pe")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxFlat_002pe")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_002pe")
+
+[node name="ObjectSelectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_002pe")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.52549)
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -276.0
+offset_top = -74.0
+offset_right = -151.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_5r0r5")
+alignment = 1
+item_count = 7
+popup/item_0/text = "Purple Book"
+popup/item_0/id = 0
+popup/item_1/text = "Television"
+popup/item_1/id = 1
+popup/item_2/text = "Coffee Table"
+popup/item_2/id = 2
+popup/item_3/text = "Whiskey Glass"
+popup/item_3/id = 3
+popup/item_4/text = "Candle"
+popup/item_4/id = 4
+popup/item_5/text = "Desk Lamp"
+popup/item_5/id = 5
+popup/item_6/text = "Ceiling Fan"
+popup/item_6/id = 6
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = -69.0
+offset_right = -29.0
+offset_bottom = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_c0d5q")
+text = "Select Object"
+
+[node name="CloseMenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = -33.0
+grow_vertical = 0
+theme = ExtResource("2_c0d5q")
+text = "Close Menu"
+
+[connection signal="pressed" from="Button" to="." method="submit_button_pressed"]
+[connection signal="pressed" from="CloseMenuButton" to="." method="close_menu_pressed"]

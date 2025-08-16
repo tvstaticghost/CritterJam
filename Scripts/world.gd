@@ -11,9 +11,22 @@ extends Node3D
 @onready var tv_static_mesh: MeshInstance3D = $LivingRoomLevel/TVandSpeakers/Television/TVStaticImage
 @onready var blur_overlay: ColorRect = $CanvasLayer/Control/BlurOverlay
 
+@onready var guess_button: Button = $CanvasLayer/Control/GuessButton
+@onready var object_selection_menu: Control = $CanvasLayer/ObjectSelectionMenu
+@onready var control: Control = $CanvasLayer/Control
+
+@onready var animation_player: AnimationPlayer = $CanvasLayer/FadeToBlack/AnimationPlayer
+@onready var win_timer: Timer = $WinTimer
+
+
 var current_camera: Camera3D
 var is_phone_active: bool = false
+var is_on_call: bool = false
+var can_open_phone: bool = true
 var camera_list
+var did_win: bool = false
+
+var losing_scene = preload("res://Scenes/losing_scene.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,7 +56,8 @@ func switch_cameras():
 	print(current_camera)
 	
 func toggle_phone():
-	phone_ui.visible = !phone_ui.visible
+	if !is_on_call:
+		phone_ui.visible = !phone_ui.visible
 	
 	if phone_ui.visible:
 		blur_overlay.visible = true
@@ -63,4 +77,24 @@ func _process(delta):
 			switch_cameras()
 	
 	if Input.is_action_just_pressed("toggle_phone"):
-		toggle_phone()
+		if can_open_phone:
+			toggle_phone()
+
+
+func guess_object_button_pressed() -> void:
+	print("pressed button")
+	if !is_on_call or !is_phone_active:
+		object_selection_menu.visible = true
+		control.visible = false
+		can_open_phone = false
+
+func check_game_won(object_text):
+	if object_text == "Candle":
+		did_win = true
+	animation_player.play("fade_to_black")
+	win_timer.start()
+
+
+func win_timer_done() -> void:
+	if !did_win:
+		get_tree().change_scene_to_packed(losing_scene)

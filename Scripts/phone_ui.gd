@@ -12,14 +12,21 @@ extends Control
 @onready var tone_0: AudioStreamPlayer = $Tone_0
 
 @onready var purple_book_audio: AudioStreamPlayer = $"../../PurpleBookAudio"
-@onready var purple_book_text: MeshInstance3D = $"../../LivingRoomLevel/CritterJam_LivingRoom1/Cushion_001/PurpleClueBook/Text"
+@onready var purple_book_text: MeshInstance3D = $"../../LivingRoomLevel/CritterJam_LivingRoom1/PurpleClueBook/Text"
 @onready var tv_static_audio: AudioStreamPlayer3D = $"../../LivingRoomLevel/TVandSpeakers/Television/TVStaticAudio"
 @onready var tv_static_mesh: MeshInstance3D = $"../../LivingRoomLevel/TVandSpeakers/Television/TVStaticImage"
+@onready var call_timer: Timer = $"../../CallTimer"
+@onready var call_failed_audio: AudioStreamPlayer = $"../../CallFailed"
+@onready var call_failed_timer: Timer = $"../../CallFailedTimer"
+
+@onready var phone_ring_audio: AudioStreamPlayer = $"../../PhoneRinging"
+@onready var world_script = $"../.."
 
 @onready var number_field: Label = $Panel/NumberField
 @onready var number_entered: String = ""
 
 var calling: bool = false
+var can_open_phone: bool = true
 
 func update_number_field(number):
 	if len(number_entered) < 12:
@@ -86,23 +93,41 @@ func call_pressed() -> void:
 func try_phone_call():
 	#numbers: 555-927-1908 for purple book and 555-254-1909 for sticky note
 	calling = true
-	
+	world_script.is_on_call = true
+	phone_ring_audio.play()
+	#timer
+	call_timer.start()
+
+func back_pressed() -> void:
+	if not calling:
+		number_entered = number_entered.left(number_entered.length() - 1)
+		number_field.text = number_entered
+
+
+func call_timeout() -> void:
 	if number_entered == "555-927-1908":
 		print("Turn TV ON")
 		tv_static_audio.play()
 		tv_static_mesh.visible = true
+		number_entered = ""
+		number_field.text = number_entered
+		calling = false
+		world_script.is_on_call = false
+	
 	elif number_entered == "555-254-1909":
 		print("Purple Book")
 		purple_book_audio.play()
 		purple_book_text.visible = true
+		number_entered = ""
+		number_field.text = number_entered
+		calling = false
+		world_script.is_on_call = false
 	else:
-		print("Play no connection sound")
-	#Add timer for the phone call dpending on result and duration of audio clip
-	#Reset (Add to new timer function)
+		call_failed_audio.play()
+		call_failed_timer.start()
+
+func call_failed() -> void:
 	number_entered = ""
 	number_field.text = number_entered
 	calling = false
-
-func back_pressed() -> void:
-	number_entered = number_entered.left(number_entered.length() - 1)
-	number_field.text = number_entered
+	world_script.is_on_call = false
