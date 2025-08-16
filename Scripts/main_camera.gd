@@ -1,12 +1,14 @@
 extends Camera3D
 
+@onready var purple_book_text = $"../LivingRoomLevel/CritterJam_LivingRoom1/Cushion_001/PurpleClueBook/Text"
+
 var camera_rotation_amount: float = 0.2
 var camera_zoom_amount: float = 0.5
 
 var starting_camera_x: float
 var starting_camera_y: float
 var max_fov: float = 80.0
-var min_fov: float = 30.0
+var min_fov: float = 25.0
 #30.0 to 80.0 FOV
 
 var is_camera_moving: bool = false
@@ -33,6 +35,8 @@ func shoot_ray():
 	
 	if !raycast_result.is_empty():
 		print(str(raycast_result.collider.name))
+		if raycast_result.collider.name == "Purple Book":
+			purple_book_text.visible = true
 		#Change this functionality to display in UI
 
 func _process(_delta: float) -> void:
@@ -63,12 +67,10 @@ func _process(_delta: float) -> void:
 			is_camera_moving = true
 			
 	if Input.is_action_pressed("zoom_in"):
-		print("Zoom in")
 		if fov - camera_zoom_amount >= min_fov:
 			fov -= camera_zoom_amount
 	
 	if Input.is_action_pressed("zoom_out"):
-		print("zoom out")
 		if fov + camera_zoom_amount <= max_fov:
 			fov += camera_zoom_amount
 		
@@ -77,14 +79,14 @@ func _process(_delta: float) -> void:
 		is_camera_moving = false
 		
 	if is_camera_moving:
-		if not $AudioStreamPlayer3D.playing:
+		if not $AudioStreamPlayer.playing:
 			play_camera_movement_sound()
 	else:
-		if $AudioStreamPlayer3D.playing:
+		if $AudioStreamPlayer.playing:
 			stop_camera_movement_sound()
 
 func play_camera_movement_sound():
-	$AudioStreamPlayer3D.play()
+	$AudioStreamPlayer.play()
 	
 func stop_camera_movement_sound():
-	$AudioStreamPlayer3D.stop()
+	$AudioStreamPlayer.stop()

@@ -1,0 +1,227 @@
+[gd_scene load_steps=17 format=3 uid="uid://c2gmrrtjryi22"]
+
+[ext_resource type="Theme" uid="uid://vgmaullnexc" path="res://Themes/button_theme.tres" id="1_i1863"]
+[ext_resource type="Script" uid="uid://bi7bngow14rbu" path="res://Scripts/phone_ui.gd" id="1_u5yck"]
+[ext_resource type="Theme" uid="uid://b2wmr6cl0ckkg" path="res://Themes/call_button_theme.tres" id="2_36eyh"]
+[ext_resource type="Texture2D" uid="uid://jj35yhestsku" path="res://Materials/icons8-back-24.png" id="3_a8qtb"]
+[ext_resource type="Texture2D" uid="uid://bkqifgw0edbl6" path="res://Materials/icons8-phone-24 (1).png" id="3_u5yck"]
+[ext_resource type="AudioStream" uid="uid://df2dhslg4kedi" path="res://Sounds/1_phone_sound.mp3" id="5_l5cb7"]
+[ext_resource type="AudioStream" uid="uid://khkkfs6hect3" path="res://Sounds/2_phone_sound.mp3" id="6_a8qtb"]
+[ext_resource type="AudioStream" uid="uid://bjr8mp4m5bpbu" path="res://Sounds/3_phone_sound.mp3" id="7_7vva7"]
+[ext_resource type="AudioStream" uid="uid://5kf1rpttxi6q" path="res://Sounds/4_phone_sound.mp3" id="8_3i61a"]
+[ext_resource type="AudioStream" uid="uid://bhrdhum7e3gvn" path="res://Sounds/5_phone_sound.mp3" id="9_kmbln"]
+[ext_resource type="AudioStream" uid="uid://dtlpfg7enjpdu" path="res://Sounds/6_phone_sound.mp3" id="10_r2eng"]
+[ext_resource type="AudioStream" uid="uid://cvg8fseubtji3" path="res://Sounds/7_phone_sound.mp3" id="11_7wfxh"]
+[ext_resource type="AudioStream" uid="uid://c6ivnh3hde42p" path="res://Sounds/8_phone_sound.mp3" id="12_l2s3e"]
+[ext_resource type="AudioStream" uid="uid://c4f0eurp0ko61" path="res://Sounds/9_phone_sound.mp3" id="13_mxckt"]
+[ext_resource type="AudioStream" uid="uid://dn6o72qdpg5jk" path="res://Sounds/0_phone_sound.mp3" id="14_ehxqx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6bxq"]
+bg_color = Color(0.10748, 0.10748, 0.10748, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="PhoneUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -14.0
+offset_right = 2.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u5yck")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.968
+offset_top = -197.0
+offset_right = 99.968
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6bxq")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+z_index = 2
+layout_mode = 0
+offset_left = 30.968
+offset_top = 162.0
+offset_right = 168.968
+offset_bottom = 349.0
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = 9
+columns = 3
+
+[node name="1Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "1"
+
+[node name="2Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "2
+"
+text_overrun_behavior = 1
+
+[node name="3Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "3
+"
+text_overrun_behavior = 1
+
+[node name="4Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "4
+"
+text_overrun_behavior = 1
+
+[node name="5Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "5"
+text_overrun_behavior = 1
+
+[node name="6Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "6
+"
+text_overrun_behavior = 1
+
+[node name="7Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "7
+"
+text_overrun_behavior = 1
+
+[node name="8Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "8
+"
+text_overrun_behavior = 1
+
+[node name="9Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "9
+"
+text_overrun_behavior = 1
+
+[node name="BackButton" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "
+"
+icon = ExtResource("3_a8qtb")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="0Button" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("1_i1863")
+text = "0
+"
+text_overrun_behavior = 1
+
+[node name="CallButton" type="Button" parent="Panel/GridContainer"]
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme = ExtResource("2_36eyh")
+text = "
+"
+icon = ExtResource("3_u5yck")
+icon_alignment = 1
+
+[node name="NumberField" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 111.0
+offset_right = 153.0
+offset_bottom = 140.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tone_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l5cb7")
+
+[node name="Tone_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_a8qtb")
+
+[node name="Tone_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7vva7")
+
+[node name="Tone_4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3i61a")
+
+[node name="Tone_5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_kmbln")
+
+[node name="Tone_6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_r2eng")
+
+[node name="Tone_7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_7wfxh")
+
+[node name="Tone_8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_l2s3e")
+
+[node name="Tone_9" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_mxckt")
+
+[node name="Tone_0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ehxqx")
+
+[connection signal="pressed" from="Panel/GridContainer/1Button" to="." method="one_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/2Button" to="." method="two_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/3Button" to="." method="three_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/4Button" to="." method="four_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/5Button" to="." method="five_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/6Button" to="." method="six_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/7Button" to="." method="seven_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/8Button" to="." method="eight_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/9Button" to="." method="nine_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/BackButton" to="." method="back_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/0Button" to="." method="zero_pressed"]
+[connection signal="pressed" from="Panel/GridContainer/CallButton" to="." method="call_pressed"]

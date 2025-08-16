@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b2wmr6cl0ckkg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lk2xy"]
+bg_color = Color(0.103066, 0.712895, 0.403307, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxFlat_lk2xy")
+Button/styles/hover = SubResource("StyleBoxFlat_lk2xy")
+Button/styles/normal = SubResource("StyleBoxFlat_lk2xy")
+Button/styles/pressed = SubResource("StyleBoxFlat_lk2xy")

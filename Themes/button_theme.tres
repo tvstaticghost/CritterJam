@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://vgmaullnexc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjy1l"]
+bg_color = Color(0, 0.715427, 0.408515, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxmtg"]
+bg_color = Color(0.181015, 0.193707, 0.195825, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14kg4"]
+bg_color = Color(0.118989, 0.713526, 0.382448, 1)
+
+[resource]
+/styles/background = SubResource("StyleBoxFlat_qjy1l")
+Button/styles/focus = SubResource("StyleBoxFlat_oxmtg")
+Button/styles/hover = SubResource("StyleBoxFlat_oxmtg")
+Button/styles/normal = SubResource("StyleBoxFlat_oxmtg")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_14kg4")
+Button/styles/pressed = SubResource("StyleBoxFlat_oxmtg")
